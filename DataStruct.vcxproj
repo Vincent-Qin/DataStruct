@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SingleLinkList.cpp" />
-    <ClCompile Include="SqList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinearList\ReturnValue.h" />
