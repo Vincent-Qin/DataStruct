@@ -6,34 +6,41 @@
 struct SqList{
 	int *elem;
 	int length;
+
+	SqList() :elem(nullptr), length(0) {};
 };
 
 // 初始化顺序表
-static int InitSqList(SqList& L) {
-	L.elem = new int[MAXSIZE];	//分配一个数组空间
+static void InitSqList(SqList& L) {
+	int* p = new int[MAXSIZE] {0};
+	
+	delete[] L.elem;
 
-	if (!L.elem) {				//分配空间失败 退出
-		std::exit(FLOW);
-	}
+	L.elem = p;
+	L.length = 0;
 
-	L.length = 0;				//空表数据为0
-
-	return SUCCESS;
+	std::cout << "初始化顺序表成功！" << std::endl;
 }
 
 // 销毁顺序表
 static void DestroySqList(SqList& L) {
 	if (L.elem) {
 		delete[] L.elem;
-	}
 
-	L.elem = nullptr;			//将指针置空，杜绝指针悬空和二次释放
-	L.length = 0;
+		L.elem = nullptr;			//将指针置空，杜绝指针悬空和二次释放
+		L.length = 0;
+
+		std::cout << "销毁顺序表成功！" << std::endl;
+	}
+	else {
+		std::cout << "销毁失败，顺序表未初始化或已经销毁！" << std::endl;
+	}
 }
 
 // 清空顺序表
 static void ClearSqList(SqList& L) {
 	L.length = 0;
+	std::cout << "清空顺序表成功！" << std::endl;
 }
 
 // 判断顺序表是否为空
@@ -47,39 +54,43 @@ static int SqListLength(const SqList& L) {
 }
 
 // 若cur_e是顺序表的元素，且不是第一个元素，则返回其前驱pre_e
-static int PriorElem(const SqList& L, int cur_e, int &pre_e) {
+static int PriorElem(const SqList& L, int cur_e) {
 	if (L.length == 0) return ERROR;
 
+	int pre_e;
 	for (int i = 1; i < L.length; ++i) {
 		if (L.elem[i] == cur_e) {
 			pre_e = L.elem[i - 1];
-			return SUCCESS;
+			return pre_e;
 		}
 	}
+
 	return ERROR;
 }
 
 // 若cur_e是顺序表的元素，且不是最后一个元素，则返回其后继next_e
-static int NextElem(const SqList& L, int cur_e, int &next_e) {
+static int NextElem(const SqList& L, int cur_e) {
 	if (L.length == 0) return ERROR;
 
+	int next_e;
 	for (int i = 0; i < L.length - 1; ++i) {
 		if (L.elem[i] == cur_e) {
 			next_e = L.elem[i + 1];
-			return SUCCESS;
+			return next_e;
 		}
 	}
+
 	return ERROR;
 }
 
 // 取值：取第i个元素e
-static int GetElem(const SqList& L, int i, int &e) {
+static int GetElem(const SqList& L, int i) {
 	if (i < 1 || i > L.length) {
 		return ERROR;
 	}
-
-	e = L.elem[i - 1];
-	return SUCCESS;
+	
+	int e = L.elem[i - 1];
+	return e;
 }
 
 // 查找：在顺序表中查找元素e
@@ -93,13 +104,15 @@ static int LocateElem(const SqList& L, int e) {
 }
 
 // 插入：在顺序表的第i个位置插入数据e
-static int ListInsert(SqList& L, int i, int &e) {
-	if (i < 1 || i >= L.length) {	//i值不合法
-		return ERROR;
+static void ListInsert(SqList& L, int i, int e) {
+	if (i < 1 || i > L.length + 1) {		//i值不合法
+		std::cout << "插入失败，i值不合法" << std::endl;
+		return;
 	}
 
-	if (L.length == MAXSIZE) {		//顺序表已满
-		return ERROR;
+	if (L.length == MAXSIZE) {				//顺序表已满
+		std::cout << "插入失败，顺序表已满" << std::endl;
+		return;
 	}
 
 	for (int j = L.length - 1; j >= i; --j) {
@@ -108,14 +121,21 @@ static int ListInsert(SqList& L, int i, int &e) {
 
 	L.elem[i - 1] = e;
 	++L.length;
+	std::cout << "插入成功！" << std::endl;
 
-	return SUCCESS;
+	return;
 }
 
 // 删除：删除第i个元素
-static int DeleteElem(SqList& L, int i) {
-	if (i < 1 || i > L.length) {		//i值不合法
-		return ERROR;
+static void DeleteElem(SqList& L, int i) {
+	if (L.length == 0) {
+		std::cout << "删除失败，顺序表为空" << std::endl;
+		return;
+	}
+
+	if (i < 1 || i > L.length) {			//i值不合法
+		std::cout << "删除失败，i值不合法" << std::endl;
+		return;
 	}
 
 	for (int j = i; j < L.length; ++j) {
@@ -123,7 +143,8 @@ static int DeleteElem(SqList& L, int i) {
 	}
 
 	--L.length;
-	return SUCCESS;
+	std::cout << "删除成功！" << std::endl;
+	return;
 }
 
 // 遍历访问
