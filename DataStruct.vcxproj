@@ -19,12 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="LinearList\LinearList.h" />
     <ClInclude Include="LinearList\ReturnValue.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LinearList\SingleLinkList.cpp" />
     <ClCompile Include="LinearList\SqList.cpp" />
-    <ClCompile Include="SqStack.cpp" />
+    <ClCompile Include="test01.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
