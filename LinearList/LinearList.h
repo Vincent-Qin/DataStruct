@@ -86,13 +86,19 @@ int SingleLinkListNextElem(const LNode* LinkList, int cur_e);
 int GetSingleLinkListElem(const LNode* LinkList, int i);
 
 // 查找：查找元素e
-LNode* LocateSingleLinkListElem(LNode* LinkList, int e);
+LNode* LocateSingleLinkListElem(const LNode* LinkList, int e);
 
 // 插入：在第i个位置插入数据e
-void SingleLinkListInsertElem(LNode* LinkList, int i, int e);
+void SingleLinkListInsertElem(LNode*& LinkList, int i, int e);
 
 // 删除：删除第i个元素
-void DeleteSingleLInkListElem(LNode* LinkList, int i);
+void DeleteSingleLinkListElem(LNode*& LinkList, int i);
 
 // 遍历访问
-void TraverseSingleLInkList(const LNode* LinkList);
+void TraverseSingleLinkList(const LNode* LinkList);
+
+// 前插法创建单链表
+void CreatSingleLinkList_H(LNode*& LinkList, int len);
+
+// 尾插法创建单链表
+void CreatSingleLinkList_R(LNode*& LinkList, int len);

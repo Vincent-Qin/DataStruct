@@ -133,12 +133,12 @@ int GetSingleLinkListElem(const LNode* LinkList, int i) {
 	return p->data;
 }
 // 查找：查找元素e，找到返回元素地址
-LNode* LocateSingleLinkListElem(LNode* LinkList, int e) {
+LNode* LocateSingleLinkListElem(const LNode* LinkList, int e) {
 	if (LinkList == nullptr) {
 		return nullptr;
 	}
 
-	LNode* p = LinkList->next;
+	const LNode* p = LinkList->next;
 
 	while (p != nullptr && p->data != e) {
 		p = p->next;
@@ -147,7 +147,7 @@ LNode* LocateSingleLinkListElem(LNode* LinkList, int e) {
 }
 
 // 插入：在第i个位置插入数据e
-void SingleLinkListInsertElem(LNode* LinkList, int i, int e) {
+void SingleLinkListInsertElem(LNode*& LinkList, int i, int e) {
 	if (LinkList == nullptr) {
 		std::cout << "插入失败，单链表未初始化或已销毁" << std::endl;
 		return;
@@ -178,7 +178,7 @@ void SingleLinkListInsertElem(LNode* LinkList, int i, int e) {
 }
 
 // 删除：删除第i个元素
-void DeleteSingleLInkListElem(LNode* LinkList, int i) {
+void DeleteSingleLinkListElem(LNode*& LinkList, int i) {
 	if (LinkList == nullptr) {
 		std::cout << "删除失败，单链表未初始化或已销毁" << std::endl;
 		return;
@@ -208,7 +208,7 @@ void DeleteSingleLInkListElem(LNode* LinkList, int i) {
 }
 
 // 遍历访问输出
-void TraverseSingleLInkList(const LNode* LinkList) {
+void TraverseSingleLinkList(const LNode* LinkList) {
 	if (LinkList == nullptr) {
 		std::cout << "遍历失败，单链表未初始化或已销毁" << std::endl;
 		return;
@@ -222,4 +222,47 @@ void TraverseSingleLInkList(const LNode* LinkList) {
 		std::cout << p->data << " ";
 	}
 	std::cout << "遍历完毕！" << std::endl;
+}
+
+// 前插法创建单链表
+void CreatSingleLinkList_H(LNode*& LinkList, int len) {
+	if (len < 0) {
+		std::cout << "len的值不合法，创建失败" << std::endl;
+		return;
+	}
+
+	LinkList = new LNode;			//先建立一个带头结点的空链表
+
+	for (int i = 0; i < len; ++i) {
+		LNode* p = new LNode;		//生成新结点*p
+		std::cin >> p->data;		//输入元素值赋给*p的数据域
+
+		p->next = LinkList->next;	//将新结点插入到头结点之后
+		LinkList->next = p;
+	}
+
+	std::cout << "创建成功！" << std::endl;
+}
+
+// 尾插法创建单链表
+void CreatSingleLinkList_R(LNode*& LinkList, int len) {
+	if (len < 0) {
+		std::cout << "len的值不合法，创建失败" << std::endl;
+		return;
+	}
+
+	LinkList = new LNode;
+
+	LNode* r = LinkList;
+
+	for (int i = 0; i < len; ++i) {
+		LNode* p = new LNode;
+		std::cin >> p->data;
+
+		p->next = nullptr;
+		r->next = p;
+		r = p;
+	}
+
+	std::cout << "创建成功！" << std::endl;
 }
