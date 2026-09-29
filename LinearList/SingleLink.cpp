@@ -133,12 +133,12 @@ int GetSingleLinkElem(const LNode* Link, int i) {
 	return p->data;
 }
 // 查找：查找元素e，找到返回元素地址
-LNode* LocateSingleLinkElem(LNode* Link, int e) {
+LNode* LocateSingleLinkElem(const LNode* Link, int e) {
 	if (Link == nullptr) {
 		return nullptr;
 	}
 
-	LNode* p = Link->next;
+	const LNode* p = Link->next;
 
 	while (p != nullptr && p->data != e) {
 		p = p->next;
