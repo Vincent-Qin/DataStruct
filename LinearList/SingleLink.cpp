@@ -2,23 +2,23 @@
 #include "LinearList.h"
 
 // 初始化单链表
-void InitSingleLinkList(LNode*& LinkList) {
-	while (LinkList->next != nullptr) {	//若原单链表不为空，则销毁原单链表
-		LNode* p = LinkList;
-		LinkList = LinkList->next;
+void InitSingleLink(LNode*& Link) {
+	while (Link->next != nullptr) {	//若原单链表不为空，则销毁原单链表
+		LNode* p = Link;
+		Link = Link->next;
 		delete p;
 	}
 
-	LinkList = new LNode;				//初始化单链表
+	Link = new LNode;				//初始化单链表
 
 	std::cout << "初始化单链表成功！" << std::endl;
 }
 
 // 销毁单链表
-void DestroySingleLinkList(LNode*& LinkList) {
-	while (LinkList->next != nullptr) {
-		LNode* p = LinkList;
-		LinkList = LinkList->next;
+void DestroySingleLink(LNode*& Link) {
+	while (Link->next != nullptr) {
+		LNode* p = Link;
+		Link = Link->next;
 		delete p;
 	}
 
@@ -26,37 +26,37 @@ void DestroySingleLinkList(LNode*& LinkList) {
 }
 
 // 清空单链表
-void ClearSingleLinkList(LNode*& LinkList) {
-	if (LinkList == nullptr) {
+void ClearSingleLink(LNode*& Link) {
+	if (Link == nullptr) {
 		std::cout << "单链表为空" << std::endl;
 		return;
 	}
 
-	LNode* p = LinkList->next;
+	LNode* p = Link->next;
 	while (p != nullptr) {
 		LNode* temp = p;
 		p = p->next;
 		delete temp;
 	}
 
-	LinkList->next = nullptr;
+	Link->next = nullptr;
 
 	std::cout << "清空单链表成功！" << std::endl;
 }
 
 // 判断单链表是否为空
-bool SingleLinkListIsEmpty(const LNode* LinkList) {
-	return LinkList->next == nullptr;
+bool SingleLinkIsEmpty(const LNode* Link) {
+	return Link->next == nullptr;
 }
 
 // 返回单链表中元素的个数
- int SingleLinkListLength(const LNode* LinkList) {
-	if (LinkList == nullptr) {
+ int SingleLinkLength(const LNode* Link) {
+	if (Link == nullptr) {
 		return 0;
 	}
 
 	int length = 0;
-	const LNode* p = LinkList->next;
+	const LNode* p = Link->next;
 
 	while (p != nullptr) {
 		++length;
@@ -67,13 +67,13 @@ bool SingleLinkListIsEmpty(const LNode* LinkList) {
 }
 
 // 若cur_e是单链表的元素，且不是第一个元素，则返回其前驱pre_e
- int SingleLinkListPriorElem(const LNode* LinkList, int cur_e) {
-	 if (LinkList == nullptr) {
+ int SingleLinkPriorElem(const LNode* Link, int cur_e) {
+	 if (Link == nullptr) {
 		 std::cout << "单链表未初始化或已销毁" << std::endl;
 		 return ERROR;
 	 }
 
-	 const LNode* p = LinkList->next;
+	 const LNode* p = Link->next;
 	 while (p != nullptr && p->next != nullptr) {
 		 if (p->next->data == cur_e) {
 			 return p->data;
@@ -88,13 +88,13 @@ bool SingleLinkListIsEmpty(const LNode* LinkList) {
 
 
 // 若cur_e是单链表的元素，且不是最后一个元素，则返回其后继next_e
- int SingleLinkListNextElem(const LNode* LinkList, int cur_e) {
-	 if (LinkList == nullptr) {
+ int SingleLinkNextElem(const LNode* Link, int cur_e) {
+	 if (Link == nullptr) {
 		 std::cout << "单链表未初始化或已销毁" << std::endl;
 		 return ERROR;
 	 }
 
-	 const LNode* p = LinkList->next;
+	 const LNode* p = Link->next;
 	 while (p != nullptr && p->next != nullptr) {
 		 if (p->data == cur_e) {
 			 return p->next->data;
@@ -108,8 +108,8 @@ bool SingleLinkListIsEmpty(const LNode* LinkList) {
  }
 
 // 取值：取第i个元素e
-int GetSingleLinkListElem(const LNode* LinkList, int i) {
-	if (LinkList == nullptr) {
+int GetSingleLinkElem(const LNode* Link, int i) {
+	if (Link == nullptr) {
 		std::cout << "单链表未初始化或已销毁" << std::endl;
 		return ERROR;
 	}
@@ -119,7 +119,7 @@ int GetSingleLinkListElem(const LNode* LinkList, int i) {
 		return ERROR;
 	}
 
-	const LNode* p = LinkList->next;
+	const LNode* p = Link->next;
 
 	for (int j = 1; j < i && p != nullptr; ++j) {	//i<j且指针p不为空则循环
 		p = p->next;
@@ -133,12 +133,12 @@ int GetSingleLinkListElem(const LNode* LinkList, int i) {
 	return p->data;
 }
 // 查找：查找元素e，找到返回元素地址
-LNode* LocateSingleLinkListElem(const LNode* LinkList, int e) {
-	if (LinkList == nullptr) {
+LNode* LocateSingleLinkElem(const LNode* Link, int e) {
+	if (Link == nullptr) {
 		return nullptr;
 	}
 
-	const LNode* p = LinkList->next;
+	const LNode* p = Link->next;
 
 	while (p != nullptr && p->data != e) {
 		p = p->next;
@@ -147,18 +147,18 @@ LNode* LocateSingleLinkListElem(const LNode* LinkList, int e) {
 }
 
 // 插入：在第i个位置插入数据e
-void SingleLinkListInsertElem(LNode*& LinkList, int i, int e) {
-	if (LinkList == nullptr) {
+void SingleLinkInsertElem(LNode*& Link, int i, int e) {
+	if (Link == nullptr) {
 		std::cout << "插入失败，单链表未初始化或已销毁" << std::endl;
 		return;
 	}
 
-	if (i < 1 || i > SingleLinkListLength(LinkList) + 1) {	//i值不合法
+	if (i < 1 || i > SingleLinkLength(Link) + 1) {	//i值不合法
 		std::cout << "插入失败，i值不合法" << std::endl;
 		return;
 	}
 
-	LNode* p = LinkList;
+	LNode* p = Link;
 
 	for (int j = 1; j < i; ++j) {	//查找第i-1个结点，p指向该节点
 		p = p->next;
@@ -178,18 +178,18 @@ void SingleLinkListInsertElem(LNode*& LinkList, int i, int e) {
 }
 
 // 删除：删除第i个元素
-void DeleteSingleLinkListElem(LNode*& LinkList, int i) {
-	if (LinkList == nullptr) {
+void DeleteSingleLinkElem(LNode*& Link, int i) {
+	if (Link == nullptr) {
 		std::cout << "删除失败，单链表未初始化或已销毁" << std::endl;
 		return;
 	}
 
-	if (i < 1 || i > SingleLinkListLength(LinkList)) {	//i值不合法
+	if (i < 1 || i > SingleLinkLength(Link)) {	//i值不合法
 		std::cout << "删除失败，i值不合法" << std::endl;
 		return;
 	}
 
-	LNode* p = LinkList;
+	LNode* p = Link;
 
 	for (int j = 1; j < i; ++j) {	//查找第i-1个结点，p指向该节点
 		p = p->next;
@@ -208,14 +208,14 @@ void DeleteSingleLinkListElem(LNode*& LinkList, int i) {
 }
 
 // 遍历访问输出
-void TraverseSingleLinkList(const LNode* LinkList) {
-	if (LinkList == nullptr) {
+void TraverseSingleLink(const LNode* Link) {
+	if (Link == nullptr) {
 		std::cout << "遍历失败，单链表未初始化或已销毁" << std::endl;
 		return;
 	}
 
-	const LNode* p = LinkList;
-	int length = SingleLinkListLength(LinkList);
+	const LNode* p = Link;
+	int length = SingleLinkLength(Link);
 
 	for (int j = 1; j <= length; ++j) {
 		p = p->next;
@@ -225,35 +225,35 @@ void TraverseSingleLinkList(const LNode* LinkList) {
 }
 
 // 前插法创建单链表
-void CreatSingleLinkList_H(LNode*& LinkList, int len) {
+void CreatSingleLink_H(LNode*& Link, int len) {
 	if (len < 0) {
 		std::cout << "len的值不合法，创建失败" << std::endl;
 		return;
 	}
 
-	LinkList = new LNode;			//先建立一个带头结点的空链表
+	Link = new LNode;			//先建立一个带头结点的空链表
 
 	for (int i = 0; i < len; ++i) {
 		LNode* p = new LNode;		//生成新结点*p
 		std::cin >> p->data;		//输入元素值赋给*p的数据域
 
-		p->next = LinkList->next;	//将新结点插入到头结点之后
-		LinkList->next = p;
+		p->next = Link->next;	//将新结点插入到头结点之后
+		Link->next = p;
 	}
 
 	std::cout << "创建成功！" << std::endl;
 }
 
 // 尾插法创建单链表
-void CreatSingleLinkList_R(LNode*& LinkList, int len) {
+void CreatSingleLink_R(LNode*& Link, int len) {
 	if (len < 0) {
 		std::cout << "len的值不合法，创建失败" << std::endl;
 		return;
 	}
 
-	LinkList = new LNode;
+	Link = new LNode;
 
-	LNode* r = LinkList;
+	LNode* r = Link;
 
 	for (int i = 0; i < len; ++i) {
 		LNode* p = new LNode;
