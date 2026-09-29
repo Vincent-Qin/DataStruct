@@ -2,9 +2,7 @@
 #include "LinearList/LinearList.h"
 
 int main() {
-	LNode* LinkList;
+	LNode* Link;
 
-	InitSingleLinkList(LinkList);
-
-
+	InitSingleLink(Link);
 }
