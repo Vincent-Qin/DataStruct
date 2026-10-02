@@ -15,15 +15,27 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SingleLinkList.cpp">
+    <ClCompile Include="LinearList\SingleLink.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="SqList.cpp">
+    <ClCompile Include="LinearList\SqList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="test01.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LinearList\DoubleLink.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LinearList\MergeLinearList.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinearList\ReturnValue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LinearList\LinearList.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

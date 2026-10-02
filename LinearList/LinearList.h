@@ -49,6 +49,13 @@ void DeleteSqListElem(SqList& L, int i);
 // 遍历访问
 void TraverseSqList(const SqList& L);
 
+// 顺序表的合并
+/* * * * * * * * * * * * * * * * *
+ * 必须是两个非递减的顺序表LA、LB
+ * 结果LC按升序排列
+ * * * * * * * * * * * * * * * * */
+void MergeSqList(const SqList& LA, const SqList& LB, SqList& LC);
+
 
 
 /*********** 单链表 **********/
@@ -102,6 +109,13 @@ void CreatSingleLink_H(LNode*& Link, int len);
 
 // 尾插法创建单链表
 void CreatSingleLink_R(LNode*& Link, int len);
+
+// 顺序链表的合并
+/* * * * * * * * * * * * * * * * *
+ * 必须是两个非递减的顺序链表LA、LB
+ * 结果LC按升序排列
+ * * * * * * * * * * * * * * * * */
+void MergeSqLink(LNode*& LA, LNode*& LB, LNode*& LC);
 
 
 
