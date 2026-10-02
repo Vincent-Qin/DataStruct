@@ -139,14 +139,14 @@ struct DouLNode {
 	DouLNode* prior;	//指向直接前驱
 	DouLNode* next;		//指向直接后继
 
-	// TODO...
+	DouLNode() :data(0), prior(nullptr), next(nullptr) {};
 };
 
 // 查找第i个元素，返回其地址
 DouLNode* LocateDoubleLinkElem(DouLNode* DouLink, int i);
 
 // 双向链表的插入
-void DoubleLinkInsertElem(DouLNode*& DouLink, int i, int e);
+void DoubleLinkInsertElem(DouLNode* DouLink, int i, int e);
 
 // 双向链表的删除
-void DeleteDoubleLinkElem(DouLNode*& DouLink, int i);
+void DeleteDoubleLinkElem(DouLNode* DouLink, int i);
