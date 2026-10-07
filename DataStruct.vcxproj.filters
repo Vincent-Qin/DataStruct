@@ -33,6 +33,9 @@
     <ClCompile Include="LinearList\PolynomialOperation.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="StacksAndQueues\SqStack.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinearList\LinearList.h">
