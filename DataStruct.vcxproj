@@ -20,7 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinearList\LinearList.h" />
-    <ClInclude Include="LinearList\ReturnValue.h" />
+    <ClInclude Include="ReturnValue.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LinearList\DoubleLink.cpp" />

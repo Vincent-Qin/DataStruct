@@ -35,10 +35,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="LinearList\ReturnValue.h">
+    <ClInclude Include="LinearList\LinearList.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="LinearList\LinearList.h">
+    <ClInclude Include="ReturnValue.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
