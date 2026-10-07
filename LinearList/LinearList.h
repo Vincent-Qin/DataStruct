@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../ReturnValue.h"
 #include <iostream>
 #include <cstdlib>
 

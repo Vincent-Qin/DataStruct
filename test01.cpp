@@ -1,4 +1,4 @@
-#include "LinearList/ReturnValue.h"
+#include "ReturnValue.h"
 #include "LinearList/LinearList.h"
 
 int main() {
