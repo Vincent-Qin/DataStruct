@@ -25,6 +25,7 @@
   <ItemGroup>
     <ClCompile Include="LinearList\DoubleLink.cpp" />
     <ClCompile Include="LinearList\MergeLinearList.cpp" />
+    <ClCompile Include="LinearList\PolynomialOperation.cpp" />
     <ClCompile Include="LinearList\SingleLink.cpp" />
     <ClCompile Include="LinearList\SqList.cpp" />
     <ClCompile Include="test01.cpp" />
