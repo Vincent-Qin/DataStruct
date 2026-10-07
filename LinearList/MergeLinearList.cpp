@@ -1,4 +1,3 @@
-#include "ReturnValue.h"
 #include "LinearList.h"
 
 // 顺序表的合并，合并后LA和LB可以复用，LC是全新的顺序表
