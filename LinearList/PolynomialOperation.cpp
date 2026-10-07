@@ -1,4 +1,3 @@
-#include "ReturnValue.h"
 #include "LinearList.h"
 
 // 创建多项式
