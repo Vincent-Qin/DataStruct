@@ -164,3 +164,25 @@ void DoubleLinkInsertElem(DouLNode* DouLink, int i, int e);
 
 // 双向链表的删除
 void DeleteDoubleLinkElem(DouLNode* DouLink, int i);
+
+
+
+/*********** 多项式的运算 **********/
+/* = = = = = = = = = = = = = =
+ * 此处用单链表的基本操作实现
+ * = = = = = = = = = = = = = */
+
+// 存储结构
+struct PLNode {
+	float coef;		//系数
+	int expn;		//指数
+	PLNode* next;	//指针域
+
+	PLNode() :coef(-1), expn(-1), next(nullptr) {};
+};
+
+// 创建多项式
+void CreatePolynomial(PLNode*& Poly, int n);
+
+// 多项式相加
+void AddPolynomial(PLNode*& Poly_a, PLNode*& Poly_b);
