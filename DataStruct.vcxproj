@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="LinearList\LinearList.h" />
     <ClInclude Include="ReturnValue.h" />
+    <ClInclude Include="StacksAndQueues\StacksAndQueues.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LinearList\DoubleLink.cpp" />
