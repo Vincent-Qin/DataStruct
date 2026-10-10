@@ -29,6 +29,7 @@
     <ClCompile Include="LinearList\PolynomialOperation.cpp" />
     <ClCompile Include="LinearList\SingleLink.cpp" />
     <ClCompile Include="LinearList\SqList.cpp" />
+    <ClCompile Include="StacksAndQueues\LinkStack.cpp" />
     <ClCompile Include="StacksAndQueues\SqStack.cpp" />
     <ClCompile Include="test01.cpp" />
   </ItemGroup>
